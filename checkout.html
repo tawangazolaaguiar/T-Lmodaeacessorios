@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Revise seu pedido na L&A Moda e Acessórios.">
+  <title>Finalizar pedido | L&A Moda e Acessórios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js" defer></script>
+  <script src="checkout-utils.js" defer></script>
+  <script src="checkout.js" defer></script>
+</head>
+<body class="checkout-page">
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
+  </header>
+
+  <main class="checkout-main">
+    <p class="eyebrow">SUA ESCOLHA, COM CARINHO</p>
+    <h1>Revisar pedido</h1>
+    <p class="checkout-intro">Confira seus produtos, informe o endereço de entrega e escolha a forma de pagamento.</p>
+
+    <div class="checkout-empty" id="checkout-empty" hidden>
+      <p>Sua sacola está vazia. Escolha seus favoritos para continuar.</p>
+      <a class="button" href="index.html#colecao">Ver produtos <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="checkout-layout" id="checkout-layout">
+      <form class="checkout-form" id="checkout-form">
+        <section class="checkout-section" aria-labelledby="customer-heading">
+          <div class="checkout-section-heading">
+            <span class="section-number">01</span>
+            <div><h2 id="customer-heading">Seus dados</h2><p>Precisamos destas informações para identificar o pedido.</p></div>
+          </div>
+          <div class="field-grid">
+            <div class="form-field field-full">
+              <label for="customer-name">Nome completo <span>*</span></label>
+              <input id="customer-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-field field-full">
+              <label for="customer-cpf">CPF <span>*</span></label>
+              <input id="customer-cpf" name="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required aria-describedby="cpf-error">
+              <small class="field-error" id="cpf-error" aria-live="polite"></small>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="address-heading">
+          <div class="checkout-section-heading">
+            <span class="section-number">02</span>
+            <div><h2 id="address-heading">Endereço de entrega</h2><p>Enviamos de Brasília para todo o Brasil.</p></div>
+          </div>
+          <div class="field-grid">
+            <div class="form-field">
+              <label for="customer-cep">CEP <span>*</span></label>
+              <input id="customer-cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" pattern="[0-9]{5}-?[0-9]{3}" required aria-describedby="cep-status">
+              <small class="field-hint" id="cep-status" aria-live="polite">Informe o CEP para estimar o frete.</small>
+            </div>
+            <div class="form-field">
+              <label for="customer-state">Estado (UF) <span>*</span></label>
+              <input id="customer-state" name="state" autocomplete="address-level1" maxlength="2" required>
+            </div>
+            <div class="form-field field-full">
+              <label for="customer-street">Endereço <span>*</span></label>
+              <input id="customer-street" name="street" autocomplete="address-line1" required>
+            </div>
+            <div class="form-field">
+              <label for="customer-number">Número <span>*</span></label>
+              <input id="customer-number" name="number" autocomplete="address-line2" required>
+            </div>
+            <div class="form-field">
+              <label for="customer-complement">Complemento</label>
+              <input id="customer-complement" name="complement" autocomplete="address-line3">
+            </div>
+            <div class="form-field">
+              <label for="customer-neighborhood">Bairro <span>*</span></label>
+              <input id="customer-neighborhood" name="neighborhood" required>
+            </div>
+            <div class="form-field">
+              <label for="customer-city">Cidade <span>*</span></label>
+              <input id="customer-city" name="city" autocomplete="address-level2" required>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="payment-heading">
+          <div class="checkout-section-heading">
+            <span class="section-number">03</span>
+            <div><h2 id="payment-heading">Forma de pagamento</h2><p>Escolha uma opção para ver o total estimado.</p></div>
+          </div>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="pix" checked>
+              <span class="payment-radio"></span>
+              <span class="payment-option-copy"><strong>PIX</strong><small>À vista, sem juros</small></span>
+              <span class="payment-symbol" aria-hidden="true">◇</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="credit">
+              <span class="payment-radio"></span>
+              <span class="payment-option-copy"><strong>Cartão de crédito</strong><small>Em até 12x</small></span>
+              <span class="payment-symbol" aria-hidden="true">▤</span>
+            </label>
+            <div class="installment-field" id="installment-field" hidden>
+              <label for="installments">Parcelamento no crédito</label>
+              <select id="installments" name="installments"></select>
+              <small>De 1x a 3x sem juros. De 4x a 12x com juros de 3% ao mês.</small>
+            </div>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="debit">
+              <span class="payment-radio"></span>
+              <span class="payment-option-copy"><strong>Cartão de débito</strong><small>À vista, sem juros</small></span>
+              <span class="payment-symbol" aria-hidden="true">▤</span>
+            </label>
+          </div>
+          <p class="checkout-demo-note">Esta é uma demonstração: não cobramos pagamentos nem enviamos os dados informados. Para aceitar pagamentos reais, será necessária uma integração segura com um provedor.</p>
+        </section>
+
+        <p class="checkout-feedback" id="checkout-feedback" role="status" aria-live="polite"></p>
+        <button class="button checkout-submit" id="checkout-submit" type="submit">Revisar e confirmar pedido <span aria-hidden="true">→</span></button>
+      </form>
+
+      <aside class="order-summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Resumo da compra</h2>
+        <div class="summary-products" id="summary-products"></div>
+        <div class="summary-divider"></div>
+        <div class="summary-price-row"><span>Subtotal dos produtos</span><strong id="summary-subtotal">R$ 0,00</strong></div>
+        <div class="summary-price-row"><span>Frete estimado</span><strong id="summary-shipping">Informe o CEP</strong></div>
+        <div class="summary-price-row" id="summary-interest-row" hidden><span>Juros do parcelamento</span><strong id="summary-interest">R$ 0,00</strong></div>
+        <div class="summary-divider"></div>
+        <div class="summary-total"><span>Total estimado</span><strong id="summary-total">R$ 0,00</strong></div>
+        <p class="shipping-disclaimer" id="shipping-disclaimer">Frete estimado para envio de Brasília. O valor pode variar conforme peso, dimensões e cotação da transportadora.</p>
+        <p class="installment-summary" id="installment-summary"></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="checkout-footer">
+    <a href="index.html">L&A Moda e Acessórios</a>
+    <span>Seus dados não são enviados nem armazenados nesta demonstração.</span>
+  </footer>
+</body>
+</html>

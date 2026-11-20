@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Resumo da sua compra na L&A Moda e Acessórios.">
+  <title>Resumo do pedido | L&A Moda e Acessórios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js" defer></script>
+  <script src="checkout-utils.js" defer></script>
+  <script src="pedido-confirmado.js" defer></script>
+</head>
+<body class="checkout-page">
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
+  </header>
+  <main class="confirmation-main">
+    <section class="confirmation-card" id="confirmation-card" hidden>
+      <span class="confirmation-icon" aria-hidden="true">✓</span>
+      <p class="eyebrow">RESUMO DA COMPRA</p>
+      <h1>Prévia do seu pedido</h1>
+      <p class="confirmation-disclaimer">Esta é uma demonstração. Nenhum pedido foi enviado à loja e nenhum pagamento foi processado.</p>
+      <div class="confirmation-details">
+        <div class="summary-products" id="confirmation-products"></div>
+        <div class="summary-divider"></div>
+        <div class="summary-price-row"><span>Subtotal dos produtos</span><strong id="confirmation-subtotal"></strong></div>
+        <div class="summary-price-row"><span>Frete estimado</span><strong id="confirmation-shipping"></strong></div>
+        <div class="summary-price-row" id="confirmation-interest-row" hidden><span>Juros do parcelamento</span><strong id="confirmation-interest"></strong></div>
+        <div class="summary-divider"></div>
+        <div class="summary-price-row"><span>Pagamento escolhido</span><strong id="confirmation-payment"></strong></div>
+        <div class="summary-total"><span>Total estimado</span><strong id="confirmation-total"></strong></div>
+      </div>
+      <a class="button confirmation-button" href="index.html#colecao">Continuar comprando <span aria-hidden="true">→</span></a>
+    </section>
+    <section class="confirmation-card confirmation-error" id="confirmation-error" hidden>
+      <p class="eyebrow">RESUMO INDISPONÍVEL</p>
+      <h1>Não encontramos os detalhes da compra.</h1>
+      <p>Volte à loja e revise os produtos na sacola.</p>
+      <a class="button" href="index.html#colecao">Voltar à loja <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <footer class="checkout-footer">
+    <a href="index.html">L&A Moda e Acessórios</a>
+    <span>Esta página não confirma uma venda real.</span>
+  </footer>
+</body>
+</html>

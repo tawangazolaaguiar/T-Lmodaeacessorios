@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Encontre roupas e acessórios que combinam com você na L&A Moda e Acessórios.">
+  <title>L&A Moda e Acessórios | Seu estilo, do seu jeito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">FRETE GRÁTIS na primeira compra acima de R$ 199 <span>✦</span> Use o cupom <strong>SEJAL&A</strong></div>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#novidades">Novidades</a>
+      <a href="#colecao" data-nav-category="Roupas">Roupas</a>
+      <a href="#colecao" data-nav-category="Acessórios">Acessórios</a>
+      <a href="#sobre">Nossa essência</a>
+    </nav>
+    <div class="header-actions">
+      <label class="search-box" for="search-input">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+        <input id="search-input" type="search" placeholder="O que você procura?" autocomplete="off">
+      </label>
+      <button class="icon-button cart-trigger" id="cart-trigger" aria-label="Abrir sacola">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="novidades">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=85" alt="Mulher usando um look elegante em tons neutros">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">NOVA COLEÇÃO · ESSÊNCIA</p>
+        <h1>Vista o que<br>faz você <em>sentir.</em></h1>
+        <p>Peças que acompanham você em todos os momentos.</p>
+        <a class="button button-light" href="#colecao">Descubra a coleção <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-pagination"><span class="active"></span><span></span><span></span></div>
+      <p class="hero-note">FEITO PARA VOCÊ, COM CARINHO.</p>
+    </section>
+
+    <section class="benefits" aria-label="Vantagens">
+      <div><span class="benefit-icon">✳</span><p><strong>Envio para todo o Brasil</strong><small>Seu pedido chega até você</small></p></div>
+      <div><span class="benefit-icon">♡</span><p><strong>Feito com carinho</strong><small>Detalhes que fazem a diferença</small></p></div>
+      <div><span class="benefit-icon">↺</span><p><strong>Troca fácil</strong><small>Até 7 dias para trocar</small></p></div>
+    </section>
+
+    <section class="collection section-wrap" id="colecao">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ESCOLHIDO COM AMOR</p>
+          <h2>Encontre seu <em>novo favorito</em></h2>
+        </div>
+        <a class="text-link" href="#produtos">Ver todos os produtos <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="category-tabs" role="group" aria-label="Filtrar produtos por categoria">
+        <button class="category-tab active" data-category="Todos" aria-pressed="true">Tudo</button>
+        <button class="category-tab" data-category="Roupas" aria-pressed="false">Roupas</button>
+        <button class="category-tab" data-category="Acessórios" aria-pressed="false">Acessórios</button>
+        <button class="category-tab" data-category="Bolsas" aria-pressed="false">Bolsas</button>
+      </div>
+      <div class="product-grid" id="produtos" aria-live="polite"></div>
+      <p class="empty-state" id="empty-state" hidden>Nenhum produto encontrado. Tente outra busca.</p>
+    </section>
+
+    <section class="story" id="sobre">
+      <div class="story-image-wrap">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=85" alt="Modelo com look casual e atemporal">
+        <span class="story-stamp">L&A<br><small>DESDE SEMPRE</small></span>
+      </div>
+      <div class="story-copy">
+        <p class="eyebrow">UM POUCO SOBRE NÓS</p>
+        <h2>Estilo é sobre<br>ser <em>quem você é.</em></h2>
+        <p>Acreditamos que se sentir bem começa por se reconhecer no que você veste. Por isso, escolhemos cada peça pensando em conforto, autenticidade e na beleza de ser você.</p>
+        <a class="text-link" href="#colecao">Conheça nossas escolhas <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <p class="eyebrow">UM PRESENTINHO PARA VOCÊ</p>
+      <h2>Novidades bonitas<br>na sua caixa de entrada.</h2>
+      <p>Receba lançamentos e ganhe 10% OFF na primeira compra.</p>
+      <form class="newsletter-form" id="newsletter-form">
+        <label class="visually-hidden" for="email-input">Seu e-mail</label>
+        <input id="email-input" type="email" placeholder="Seu melhor e-mail" required>
+        <button type="submit">Quero receber <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="newsletter-message" id="newsletter-message" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <p>Vista-se de você. <span>♡</span></p>
+    <small>© L&A Moda e Acessórios. Feito com carinho.</small>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Sua sacola" aria-hidden="true">
+    <div class="drawer-heading">
+      <div><p class="eyebrow">ESCOLHAS ESPECIAIS</p><h2>Sua sacola <span id="drawer-item-count">(0)</span></h2></div>
+      <button class="icon-button close-drawer" id="close-drawer" aria-label="Fechar sacola">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span>♡</span><p>Sua sacola está esperando<br>por algo especial.</p><button class="text-link" id="continue-shopping">Continuar comprando →</button></div>
+    <div class="drawer-footer" id="drawer-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="cart-subtotal">R$ 0,00</strong></div>
+      <p class="shipping-note">Frete calculado na finalização do pedido.</p>
+      <button class="button checkout-button" id="checkout-button">Finalizar pedido <span aria-hidden="true">→</span></button>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

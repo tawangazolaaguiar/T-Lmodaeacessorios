@@ -234,9 +234,15 @@ form.addEventListener("submit", (event) => {
 
   try {
     sessionStorage.setItem("la-moda-demo-order", JSON.stringify(order));
+    localStorage.removeItem("la-moda-cart");
   } catch (error) {
-    console.error("Não foi possível preparar o resumo do pedido.", error);
-    showFeedback("Não foi possível abrir o resumo do pedido neste navegador. Tente novamente.");
+    console.error("Não foi possível preparar o resumo do pedido ou esvaziar a sacola.", error);
+    try {
+      sessionStorage.removeItem("la-moda-demo-order");
+    } catch (cleanupError) {
+      console.error("Não foi possível limpar o resumo preparado após a falha.", cleanupError);
+    }
+    showFeedback("Não foi possível finalizar o pedido neste navegador. Sua sacola foi mantida para uma nova tentativa.");
     return;
   }
   window.location.assign("pedido-confirmado.html");

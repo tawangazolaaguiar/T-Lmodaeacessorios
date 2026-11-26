@@ -289,6 +289,7 @@ h1, h2, p { margin-top: 0; }
 .confirmation-icon { width: 44px; height: 44px; display: grid; place-items: center; margin: 0 auto 17px; border-radius: 50%; background: #f4eae4; color: var(--rose-dark); font-size: 20px; }
 .confirmation-card .eyebrow { margin-bottom: 9px; }
 .confirmation-card h1 { font-size: clamp(31px, 5vw, 42px); }
+.confirmation-thanks { margin: 11px auto 0; color: var(--rose-dark); font-size: 12px; line-height: 1.6; }
 .confirmation-disclaimer { max-width: 470px; margin: 13px auto 23px; color: #79564b; font-size: 10px; line-height: 1.7; }
 .confirmation-details { padding: 13px 17px 18px; border: 1px solid var(--line); text-align: left; }
 .confirmation-details .summary-total { margin-top: 17px; }

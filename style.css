@@ -159,14 +159,14 @@ h1, h2, p { margin-top: 0; }
 }
 @media (max-width: 640px) {
   .announcement { min-height: 31px; font-size: 9px; letter-spacing: .04em; }
-  .site-header { height: auto; min-height: 94px; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 51px 37px; gap: 0 12px; padding: 6px 18px 0; }
+  .site-header { height: auto; min-height: 94px; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 51px auto; gap: 0 12px; padding: 6px 18px 0; }
   .story { scroll-margin-top: 94px; }
   .brand { grid-column: 1; grid-row: 1; flex: 0 0 auto; align-items: flex-start; }
   .brand-mark { font-size: 27px; }
   .brand-mark span { font-size: 21px; }
   .brand-caption { font-size: 7px; }
-  .main-nav { position: static; grid-column: 1 / -1; grid-row: 2; height: 37px; justify-content: center; gap: clamp(6px, 1.8vw, 11px); border-bottom: 1px solid #f1efeb; background: #fff; }
-  .main-nav a { font-size: 10px; }
+  .main-nav { position: static; grid-column: 1 / -1; grid-row: 2; height: auto; min-height: 37px; flex-wrap: wrap; justify-content: center; gap: 8px 12px; padding: 6px 0; border-bottom: 1px solid #f1efeb; background: #fff; }
+  .main-nav a { font-size: 12px; white-space: nowrap; }
   .header-actions { grid-column: 2; grid-row: 1; min-width: 0; gap: 7px; }
   .search-box { flex: 1; width: auto; min-width: 0; height: auto; justify-content: flex-start; border-bottom: 1px solid #dcd8d2; }
   .search-box input { position: static; width: 100%; height: auto; padding: 0; border: 0; background: transparent; font-size: 12px; }

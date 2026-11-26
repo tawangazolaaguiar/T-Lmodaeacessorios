@@ -11,6 +11,11 @@ const cepStatus = document.querySelector("#cep-status");
 const cpfInput = document.querySelector("#customer-cpf");
 const installmentSelect = document.querySelector("#installments");
 const installmentField = document.querySelector("#installment-field");
+const cardDetails = document.querySelector("#card-details");
+const pixDemoDetails = document.querySelector("#pix-demo-details");
+const pixCopyCode = document.querySelector("#pix-copy-code");
+const pixCopyButton = document.querySelector("#pix-copy-button");
+const pixCopyStatus = document.querySelector("#pix-copy-status");
 let cart = [];
 let cartLoadError = false;
 let shippingEstimate = null;
@@ -83,6 +88,9 @@ function renderInstallments() {
 function updatePaymentSummary() {
   const payment = getSelectedPayment();
   installmentField.hidden = payment !== "credit";
+  cardDetails.hidden = payment === "pix";
+  cardDetails.disabled = payment === "pix";
+  pixDemoDetails.hidden = payment !== "pix";
   const financing = getFinancing();
   const interestRow = document.querySelector("#summary-interest-row");
   interestRow.hidden = financing.interest <= 0;
@@ -158,6 +166,26 @@ function showFeedback(message, isError = true) {
 
 form.addEventListener("change", (event) => {
   if (event.target.name === "payment" || event.target.id === "installments") updatePaymentSummary();
+});
+
+pixCopyButton.addEventListener("click", async () => {
+  let copied = false;
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(pixCopyCode.value);
+      copied = true;
+    } catch (error) {
+      console.error("Não foi possível copiar o código PIX fictício.", error);
+    }
+  }
+  if (!copied) {
+    pixCopyCode.focus();
+    pixCopyCode.select();
+    copied = document.execCommand?.("copy") || false;
+  }
+  pixCopyStatus.textContent = copied
+    ? "Código fictício copiado."
+    : "Não foi possível copiar automaticamente. Selecione e copie o código manualmente.";
 });
 
 cepInput.addEventListener("input", () => {

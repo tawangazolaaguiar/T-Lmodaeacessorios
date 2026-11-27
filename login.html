@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=site-font-size-plus-one-1">
-  <script src="login.js" defer></script>
+  <script type="module" src="login.js"></script>
 </head>
 <body class="checkout-page registration-page login-page">
   <header class="checkout-header">
@@ -20,12 +20,10 @@
     </a>
     <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
   </header>
-
   <main class="checkout-main registration-main">
     <p class="eyebrow">BEM-VINDA DE VOLTA</p>
     <h1>Entre na sua conta</h1>
     <p class="checkout-intro">Acesse sua conta para acompanhar suas escolhas na L&A.</p>
-
     <form class="checkout-form login-form" id="login-form">
       <section class="checkout-section" aria-labelledby="login-details-heading">
         <div class="checkout-section-heading">
@@ -43,15 +41,12 @@
           </div>
         </div>
       </section>
-
-      <p class="registration-privacy">O acesso ainda não está conectado a um serviço de autenticação. Seus dados não serão enviados nem armazenados nesta demonstração.</p>
       <p class="checkout-feedback registration-feedback" id="login-feedback" role="status" aria-live="polite"></p>
-      <button class="button checkout-submit" type="submit">Entrar <span aria-hidden="true">→</span></button>
+      <button class="button checkout-submit" id="login-submit" type="submit">Entrar <span aria-hidden="true">→</span></button>
+      <p class="login-signup"><a href="#" id="forgot-password">Esqueci minha senha</a></p>
     </form>
-
     <p class="login-signup">Ainda não tem cadastro? <a href="cadastro.html">Criar uma conta <span aria-hidden="true">→</span></a></p>
   </main>
-
   <footer class="checkout-footer">
     <a href="index.html">L&A Moda e Acessórios</a>
     <span><a href="cadastro.html">Ir para cadastro</a></span>

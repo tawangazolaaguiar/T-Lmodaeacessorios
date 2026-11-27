@@ -205,53 +205,6 @@ cpfInput.addEventListener("blur", () => {
   cpfInput.value = checkoutUtils.formatCPF(cpfInput.value);
 });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  showFeedback("");
-  cpfInput.setCustomValidity("");
-  if (!checkoutUtils.isValidCPF(cpfInput.value)) {
-    cpfInput.setCustomValidity("Informe um CPF válido.");
-    document.querySelector("#cpf-error").textContent = "Confira o CPF informado.";
-    cpfInput.reportValidity();
-    return;
-  }
-  if (!shippingEstimate) {
-    cepInput.setCustomValidity("Informe um CEP válido para calcular o frete.");
-    cepInput.reportValidity();
-    return;
-  }
-  cepInput.setCustomValidity("");
-
-  if (!form.reportValidity()) return;
-
-  const financing = getFinancing();
-  const order = {
-    items: cart,
-    subtotal: getSubtotal(),
-    shipping: shippingEstimate.price,
-    shippingRegion: shippingEstimate.region,
-    payment: getSelectedPayment(),
-    installments: financing.count,
-    interest: financing.interest,
-    total: financing.total + shippingEstimate.price
-  };
-
-  try {
-    sessionStorage.setItem("la-moda-demo-order", JSON.stringify(order));
-    localStorage.removeItem("la-moda-cart");
-  } catch (error) {
-    console.error("Não foi possível preparar o resumo do pedido ou esvaziar a sacola.", error);
-    try {
-      sessionStorage.removeItem("la-moda-demo-order");
-    } catch (cleanupError) {
-      console.error("Não foi possível limpar o resumo preparado após a falha.", cleanupError);
-    }
-    showFeedback("Não foi possível finalizar o pedido neste navegador. Sua sacola foi mantida para uma nova tentativa.");
-    return;
-  }
-  window.location.assign("pedido-confirmado.html");
-});
-
 cart = loadCart();
 if (cart.length === 0) {
   showEmptyCart();

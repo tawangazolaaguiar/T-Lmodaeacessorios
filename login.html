@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Acesse sua conta na L&A Moda e Acessórios.">
+  <title>Login | L&A Moda e Acessórios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=login-demo-1">
+  <script src="login.js" defer></script>
+</head>
+<body class="checkout-page registration-page login-page">
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
+  </header>
+
+  <main class="checkout-main registration-main">
+    <p class="eyebrow">BEM-VINDA DE VOLTA</p>
+    <h1>Entre na sua conta</h1>
+    <p class="checkout-intro">Acesse sua conta para acompanhar suas escolhas na L&A.</p>
+
+    <form class="checkout-form login-form" id="login-form">
+      <section class="checkout-section" aria-labelledby="login-details-heading">
+        <div class="checkout-section-heading">
+          <span class="section-number">01</span>
+          <div><h2 id="login-details-heading">Seus dados</h2><p>Informe o e-mail e a senha usados no cadastro.</p></div>
+        </div>
+        <div class="field-grid">
+          <div class="form-field field-full">
+            <label for="login-email">E-mail <span>*</span></label>
+            <input id="login-email" name="email" type="email" inputmode="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+          </div>
+          <div class="form-field field-full">
+            <label for="login-password">Senha <span>*</span></label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          </div>
+        </div>
+      </section>
+
+      <p class="registration-privacy">O acesso ainda não está conectado a um serviço de autenticação. Seus dados não serão enviados nem armazenados nesta demonstração.</p>
+      <p class="checkout-feedback registration-feedback" id="login-feedback" role="status" aria-live="polite"></p>
+      <button class="button checkout-submit" type="submit">Entrar <span aria-hidden="true">→</span></button>
+    </form>
+
+    <p class="login-signup">Ainda não tem cadastro? <a href="cadastro.html">Criar uma conta <span aria-hidden="true">→</span></a></p>
+  </main>
+
+  <footer class="checkout-footer">
+    <a href="index.html">L&A Moda e Acessórios</a>
+    <span><a href="cadastro.html">Ir para cadastro</a></span>
+  </footer>
+</body>
+</html>

@@ -14,18 +14,18 @@ alter table public.profiles enable row level security;
 
 drop policy if exists "Usuário pode visualizar o próprio perfil" on public.profiles;
 create policy "Usuário pode visualizar o próprio perfil"
-  on public.profiles for select
-  to authenticated
+  on public.profiles for select to authenticated
   using ((select auth.uid()) = id);
 
 drop policy if exists "Usuário pode atualizar o próprio perfil" on public.profiles;
 create policy "Usuário pode atualizar o próprio perfil"
-  on public.profiles for update
-  to authenticated
+  on public.profiles for update to authenticated
   using ((select auth.uid()) = id)
   with check ((select auth.uid()) = id);
 
-grant select, update on public.profiles to authenticated;
+grant select on public.profiles to authenticated;
+revoke update on public.profiles from authenticated;
+grant update (full_name, marketing_opt_in) on public.profiles to authenticated;
 
 create or replace function public.handle_new_user()
 returns trigger
@@ -36,7 +36,10 @@ as $$
 declare
   opted_in boolean;
 begin
-  opted_in := coalesce((new.raw_user_meta_data ->> 'marketing_opt_in')::boolean, false);
+  opted_in := case
+    when new.raw_user_meta_data ->> 'marketing_opt_in' = 'true' then true
+    else false
+  end;
 
   insert into public.profiles (id, full_name, marketing_opt_in, marketing_consent_at)
   values (
@@ -45,7 +48,6 @@ begin
     opted_in,
     case when opted_in then now() else null end
   );
-
   return new;
 end;
 $$;

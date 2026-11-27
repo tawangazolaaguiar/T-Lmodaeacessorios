@@ -367,3 +367,19 @@ h1, h2, p { margin-top: 0; }
   .registration-page .checkout-footer a { font-size: 16px; }
   .registration-page .checkout-footer span { font-size: 13px; }
 }
+
+/* Pedido demonstrativo e prévia de e-mail */
+.confirmation-meta, .confirmation-customer, .demo-invoice, .email-preview {
+  margin: 18px 0; padding: 17px; border: 1px solid var(--line); background: #fff; text-align: left;
+}
+.confirmation-meta p { display: flex; justify-content: space-between; gap: 12px; margin: 7px 0; font-size: 11px; }
+.confirmation-meta span { color: var(--muted); }
+.confirmation-meta strong { text-align: right; overflow-wrap: anywhere; }
+.confirmation-customer h2, .demo-invoice h2, .email-preview h2 { margin: 0 0 12px; font-family: var(--serif); font-size: 20px; font-weight: 500; }
+.confirmation-customer p, .demo-invoice p, .email-preview p { margin: 8px 0; color: #625c55; font-size: 11px; line-height: 1.65; overflow-wrap: anywhere; }
+.demo-invoice { border: 1px dashed #b99b8d; background: #faf7f3; text-align: center; }
+.demo-invoice .eyebrow, .email-preview .eyebrow { margin-bottom: 7px; }
+.demo-invoice-warning, .email-preview-status { color: #8d4037 !important; font-weight: 700; }
+.email-preview { background: #faf9f7; }
+.email-preview pre { max-height: 420px; overflow: auto; margin: 12px 0 0; padding: 14px; border: 1px solid var(--line); background: #fff; color: #403b36; font: 11px/1.7 "DM Sans", sans-serif; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .confirmation-meta, .confirmation-customer, .demo-invoice, .email-preview { padding: 13px; } }

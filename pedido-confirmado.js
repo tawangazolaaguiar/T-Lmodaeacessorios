@@ -38,6 +38,17 @@ function renderConfirmation(order) {
     `;
   }).join("");
 
+  document.querySelector("#confirmation-order-number").textContent = order.orderNumber || "Pedido demonstrativo";
+  document.querySelector("#confirmation-order-date").textContent = order.createdAt ? new Date(order.createdAt).toLocaleString("pt-BR") : "Data não disponível";
+  const customer = order.customer || {};
+  const address = customer.address || {};
+  const addressLine = [address.street, address.number, address.complement, address.neighborhood, [address.city, address.state].filter(Boolean).join(" - "), address.postalCode ? "CEP " + address.postalCode : ""].filter(Boolean).join(", ");
+  document.querySelector("#confirmation-customer-name").textContent = customer.name || "Não informado";
+  document.querySelector("#confirmation-customer-email").textContent = customer.email || "Não informado";
+  document.querySelector("#confirmation-customer-address").textContent = addressLine || "Não informado";
+  document.querySelector("#confirmation-invoice-number").textContent = order.invoiceNumber || "DEMONSTRAÇÃO";
+  document.querySelector("#confirmation-email-recipient").textContent = customer.email || "E-mail não informado";
+
   document.querySelector("#confirmation-subtotal").textContent = money.format(order.subtotal);
   document.querySelector("#confirmation-shipping").textContent =
     `${money.format(order.shipping)} · ${order.shippingRegion}`;
@@ -55,6 +66,28 @@ function renderConfirmation(order) {
     ? ` · ${order.installments}x`
     : "";
   document.querySelector("#confirmation-payment").textContent = `${paymentLabels[order.payment]}${installmentLabel}`;
+  const itemLines = items.map((item) => {
+    const product = products.find((entry) => entry.id === item.id);
+    return "• " + product.name + " — " + item.quantity + " un. — " + money.format(product.price * item.quantity);
+  });
+  const emailText = [
+    "Olá, " + (customer.name || "cliente") + "!", "",
+    "A L&A Moda & Acessórios agradece pela sua preferência.",
+    "Esta é uma COMPRA DE DEMONSTRAÇÃO; nenhum pedido real ou pagamento foi processado.", "",
+    "Pedido: " + (order.orderNumber || "Demonstrativo"),
+    "Data: " + (order.createdAt ? new Date(order.createdAt).toLocaleString("pt-BR") : "—"), "",
+    "Produtos:", ...itemLines, "",
+    "Subtotal: " + money.format(order.subtotal),
+    "Frete estimado: " + money.format(order.shipping),
+    "Juros: " + money.format(order.interest || 0),
+    "Total demonstrativo: " + money.format(order.total), "",
+    "Endereço informado: " + (addressLine || "Não informado"), "",
+    "Comprovante: " + (order.invoiceNumber || "DEMONSTRAÇÃO"),
+    "SEM VALOR FISCAL — NÃO É NOTA FISCAL ELETRÔNICA.", "",
+    "Prévia de mensagem. Nenhum e-mail foi enviado nesta versão de demonstração."
+  ].join("\n");
+  document.querySelector("#confirmation-email-preview").textContent = emailText;
+  document.querySelector("#confirmation-email-status").textContent = "Prévia preparada. O e-mail ainda não foi enviado: o serviço de envio precisa ser configurado."; 
   confirmationCard.hidden = false;
 }
 

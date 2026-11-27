@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <title>Redefinir senha | L&A Moda e Acessórios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=site-font-size-plus-one-1">
+  <script type="module" src="redefinir-senha.js"></script>
+</head>
+<body class="checkout-page registration-page">
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="L&A Moda e Acessórios — início">
+      <span class="brand-mark">L<span>&</span>A</span>
+      <span class="brand-caption">MODA & ACESSÓRIOS</span>
+    </a>
+    <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
+  </header>
+  <main class="checkout-main registration-main">
+    <p class="eyebrow">SEGURANÇA DA SUA CONTA</p>
+    <h1>Crie uma nova senha</h1>
+    <p class="checkout-intro">Escolha uma senha nova para continuar usando sua conta L&A.</p>
+    <form class="checkout-form" id="reset-form">
+      <section class="checkout-section">
+        <div class="field-grid">
+          <div class="form-field field-full">
+            <label for="new-password">Nova senha <span>*</span></label>
+            <input id="new-password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+          <div class="form-field field-full">
+            <label for="confirm-password">Confirmar nova senha <span>*</span></label>
+            <input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+        </div>
+      </section>
+      <p class="checkout-feedback registration-feedback" id="reset-feedback" role="status" aria-live="polite"></p>
+      <button class="button checkout-submit" id="reset-submit" type="submit">Salvar nova senha <span aria-hidden="true">→</span></button>
+    </form>
+  </main>
+  <footer class="checkout-footer"><a href="index.html">L&A Moda e Acessórios</a></footer>
+</body>
+</html>

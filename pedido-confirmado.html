@@ -10,9 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=site-font-size-plus-one-1">
-  <script src="products.js" defer></script>
   <script src="checkout-utils.js" defer></script>
-  <script src="pedido-confirmado.js" defer></script>
+  <script type="module" src="pedido-confirmado.js?v=demo-email-integration-1"></script>
 </head>
 <body class="checkout-page">
   <header class="checkout-header">
@@ -57,9 +56,10 @@
       </section>
       <section class="email-preview" aria-labelledby="email-preview-heading">
         <p class="eyebrow">MENSAGEM DE AGRADECIMENTO</p>
-        <h2 id="email-preview-heading">Prévia do e-mail</h2>
+        <h2 id="email-preview-heading">Envio do e-mail</h2>
         <p class="email-preview-recipient">Destinatário: <strong id="confirmation-email-recipient"></strong></p>
-        <p class="email-preview-status" id="confirmation-email-status" role="status"></p>
+        <p class="email-preview-status" id="confirmation-email-status" role="status" aria-live="polite"></p>
+        <button class="button" id="confirmation-email-retry" type="button" hidden>Tentar enviar novamente</button>
         <pre id="confirmation-email-preview"></pre>
       </section>
       <a class="button confirmation-button" href="index.html#colecao">Continuar comprando <span aria-hidden="true">→</span></a>

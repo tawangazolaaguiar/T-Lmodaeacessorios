@@ -29,6 +29,16 @@
       <h1>Prévia do seu pedido</h1>
       <p class="confirmation-thanks">Agradecemos pela preferência! Confira abaixo o resumo do seu pedido.</p>
       <p class="confirmation-disclaimer">Esta é uma demonstração. Nenhum pedido foi enviado à loja e nenhum pagamento foi processado.</p>
+      <div class="confirmation-meta">
+        <p><span>Número do pedido</span><strong id="confirmation-order-number"></strong></p>
+        <p><span>Data</span><strong id="confirmation-order-date"></strong></p>
+      </div>
+      <section class="confirmation-customer" aria-labelledby="confirmation-customer-heading">
+        <h2 id="confirmation-customer-heading">Dados utilizados no checkout</h2>
+        <p><strong>Cliente:</strong> <span id="confirmation-customer-name"></span></p>
+        <p><strong>E-mail:</strong> <span id="confirmation-customer-email"></span></p>
+        <p><strong>Entrega:</strong> <span id="confirmation-customer-address"></span></p>
+      </section>
       <div class="confirmation-details">
         <div class="summary-products" id="confirmation-products"></div>
         <div class="summary-divider"></div>
@@ -39,6 +49,19 @@
         <div class="summary-price-row"><span>Pagamento escolhido</span><strong id="confirmation-payment"></strong></div>
         <div class="summary-total"><span>Total estimado</span><strong id="confirmation-total"></strong></div>
       </div>
+      <section class="demo-invoice" aria-labelledby="demo-invoice-heading">
+        <p class="eyebrow">COMPROVANTE DEMONSTRATIVO</p>
+        <h2 id="demo-invoice-heading">L&A Moda & Acessórios</h2>
+        <p>Número: <strong id="confirmation-invoice-number"></strong></p>
+        <p class="demo-invoice-warning">SEM VALOR FISCAL — NÃO É NOTA FISCAL ELETRÔNICA.</p>
+      </section>
+      <section class="email-preview" aria-labelledby="email-preview-heading">
+        <p class="eyebrow">MENSAGEM DE AGRADECIMENTO</p>
+        <h2 id="email-preview-heading">Prévia do e-mail</h2>
+        <p class="email-preview-recipient">Destinatário: <strong id="confirmation-email-recipient"></strong></p>
+        <p class="email-preview-status" id="confirmation-email-status" role="status"></p>
+        <pre id="confirmation-email-preview"></pre>
+      </section>
       <a class="button confirmation-button" href="index.html#colecao">Continuar comprando <span aria-hidden="true">→</span></a>
     </section>
     <section class="confirmation-card confirmation-error" id="confirmation-error" hidden>

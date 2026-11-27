@@ -239,7 +239,6 @@ h1, h2, p { margin-top: 0; }
 .registration-opt-in input { flex: 0 0 16px; width: 16px; height: 16px; margin: 0; accent-color: var(--rose); }
 .registration-privacy { margin: 18px 0 0; padding: 12px 14px; border-left: 2px solid #c59c8d; background: #f5eee8; color: #6d625a; font-size: 9px; line-height: 1.7; }
 .registration-feedback { line-height: 1.6; }
-.registration-link { display: flex; width: fit-content; margin: 12px auto 0; }
 .login-signup { margin: 24px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
 .login-signup a { color: var(--rose-dark); font-weight: 600; }
 .login-signup a:hover { color: var(--rose); }

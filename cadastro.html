@@ -10,8 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=site-font-size-plus-one-1">
-  <script src="checkout-utils.js" defer></script>
-  <script src="cadastro.js" defer></script>
+  <script type="module" src="cadastro.js"></script>
 </head>
 <body class="checkout-page registration-page">
   <header class="checkout-header">
@@ -21,80 +20,39 @@
     </a>
     <a class="checkout-back" href="index.html">← <span>Voltar à loja</span></a>
   </header>
-
   <main class="checkout-main registration-main">
     <p class="eyebrow">UM PRESENTINHO PARA VOCÊ</p>
     <h1>Faça parte da L&A</h1>
-    <p class="checkout-intro">Cadastre-se para acompanhar nossas novidades e receber ofertas e cupons exclusivos por e-mail.</p>
-
+    <p class="checkout-intro">Crie sua conta para acompanhar pedidos, novidades e vantagens exclusivas.</p>
     <form class="checkout-form registration-form" id="registration-form">
       <section class="checkout-section" aria-labelledby="registration-personal-heading">
         <div class="checkout-section-heading">
           <span class="section-number">01</span>
-          <div><h2 id="registration-personal-heading">Seus dados</h2><p>Preencha seus dados para criar seu cadastro.</p></div>
+          <div><h2 id="registration-personal-heading">Seus dados</h2><p>Precisamos apenas do essencial para começar.</p></div>
         </div>
         <div class="field-grid">
           <div class="form-field field-full">
             <label for="registration-name">Nome completo <span>*</span></label>
-            <input id="registration-name" name="name" autocomplete="name" required>
-          </div>
-          <div class="form-field">
-            <label for="registration-cpf">CPF <span>*</span></label>
-            <input id="registration-cpf" name="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required aria-describedby="registration-cpf-error">
-            <small class="field-error" id="registration-cpf-error" aria-live="polite"></small>
-          </div>
-          <div class="form-field">
-            <label for="registration-phone">Celular</label>
-            <input id="registration-phone" name="phone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000">
+            <input id="registration-name" name="name" autocomplete="name" maxlength="120" required>
           </div>
           <div class="form-field field-full">
             <label for="registration-email">E-mail <span>*</span></label>
             <input id="registration-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@exemplo.com" required>
           </div>
-        </div>
-      </section>
-
-      <section class="checkout-section" aria-labelledby="registration-address-heading">
-        <div class="checkout-section-heading">
-          <span class="section-number">02</span>
-          <div><h2 id="registration-address-heading">Endereço completo</h2><p>Informe onde você mora. O CEP pode preencher parte do endereço.</p></div>
-        </div>
-        <div class="field-grid">
-          <div class="form-field">
-            <label for="registration-cep">CEP <span>*</span></label>
-            <input id="registration-cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" pattern="[0-9]{5}-?[0-9]{3}" required aria-describedby="registration-cep-status">
-            <small class="field-hint" id="registration-cep-status" aria-live="polite">Digite o CEP para localizar o endereço.</small>
-          </div>
-          <div class="form-field">
-            <label for="registration-state">Estado (UF) <span>*</span></label>
-            <input id="registration-state" name="state" autocomplete="address-level1" maxlength="2" required>
+          <div class="form-field field-full">
+            <label for="registration-password">Criar senha <span>*</span></label>
+            <input id="registration-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint">
+            <small class="field-hint" id="password-hint">Use pelo menos 8 caracteres.</small>
           </div>
           <div class="form-field field-full">
-            <label for="registration-street">Rua / Avenida <span>*</span></label>
-            <input id="registration-street" name="street" autocomplete="address-line1" required>
-          </div>
-          <div class="form-field">
-            <label for="registration-number">Número <span>*</span></label>
-            <input id="registration-number" name="number" autocomplete="address-line2" required>
-          </div>
-          <div class="form-field">
-            <label for="registration-complement">Complemento</label>
-            <input id="registration-complement" name="complement" autocomplete="address-line3">
-          </div>
-          <div class="form-field">
-            <label for="registration-neighborhood">Bairro <span>*</span></label>
-            <input id="registration-neighborhood" name="neighborhood" required>
-          </div>
-          <div class="form-field">
-            <label for="registration-city">Cidade <span>*</span></label>
-            <input id="registration-city" name="city" autocomplete="address-level2" required>
+            <label for="registration-password-confirm">Confirmar senha <span>*</span></label>
+            <input id="registration-password-confirm" name="password-confirm" type="password" autocomplete="new-password" minlength="8" required>
           </div>
         </div>
       </section>
-
       <section class="checkout-section" aria-labelledby="registration-preferences-heading">
         <div class="checkout-section-heading">
-          <span class="section-number">03</span>
+          <span class="section-number">02</span>
           <div><h2 id="registration-preferences-heading">Novidades e cupons</h2><p>Você escolhe se quer receber mensagens promocionais.</p></div>
         </div>
         <label class="registration-opt-in">
@@ -102,13 +60,11 @@
           <span>Quero receber novidades, lançamentos e cupons exclusivos da L&A por e-mail.</span>
         </label>
       </section>
-
-      <p class="registration-privacy">Esta página é uma demonstração: os dados preenchidos não são enviados nem armazenados. A criação de cadastros e o envio de e-mails promocionais precisam de uma integração segura com um serviço próprio.</p>
+      <p class="registration-privacy">Seus dados de acesso são protegidos pelo serviço de autenticação. O recebimento de mensagens promocionais é opcional e depende da sua autorização.</p>
       <p class="checkout-feedback registration-feedback" id="registration-feedback" role="status" aria-live="polite"></p>
-      <button class="button checkout-submit" type="submit">Verificar meus dados <span aria-hidden="true">→</span></button>
+      <button class="button checkout-submit" id="registration-submit" type="submit">Criar minha conta <span aria-hidden="true">→</span></button>
     </form>
   </main>
-
   <footer class="checkout-footer">
     <a href="index.html">L&A Moda e Acessórios</a>
     <span><a href="login.html">Já tem cadastro? Entrar</a> · <a href="index.html">Voltar à loja</a></span>

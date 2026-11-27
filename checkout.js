@@ -205,7 +205,7 @@ cpfInput.addEventListener("blur", () => {
   cpfInput.value = checkoutUtils.formatCPF(cpfInput.value);
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   showFeedback("");
   cpfInput.setCustomValidity("");
@@ -224,8 +224,30 @@ form.addEventListener("submit", (event) => {
 
   if (!form.reportValidity()) return;
 
+  const customerContext = await (window.LA_CUSTOMER_CONTEXT_READY || Promise.resolve({ user: null, profile: null }));
+  const value = (selector) => document.querySelector(selector)?.value.trim() || "";
+  const profile = customerContext?.profile || {};
+  const customer = {
+    name: value("#customer-name") || profile.full_name || "",
+    email: customerContext?.user?.email || value("#customer-email"),
+    address: {
+      postalCode: value("#customer-cep") || profile.postal_code || "",
+      state: value("#customer-state") || profile.state || "",
+      street: value("#customer-street") || profile.street || "",
+      number: value("#customer-number") || profile.street_number || "",
+      complement: value("#customer-complement") || profile.complement || "",
+      neighborhood: value("#customer-neighborhood") || profile.neighborhood || "",
+      city: value("#customer-city") || profile.city || ""
+    }
+  };
+  const now = new Date();
+  const dateStamp = now.toISOString().slice(0, 10).replace(/-/g, "");
+  const randomSuffix = (window.crypto?.randomUUID?.() || Math.random().toString(36).slice(2)).replace(/-/g, "").slice(0, 6).toUpperCase();
+  const orderNumber = "LA-DEMO-" + dateStamp + "-" + randomSuffix;
+  const invoiceNumber = "DEMO-" + now.getFullYear() + "-" + randomSuffix;
   const financing = getFinancing();
   const order = {
+    orderNumber, invoiceNumber, createdAt: now.toISOString(), emailStatus: "not_sent", customer,
     items: cart,
     subtotal: getSubtotal(),
     shipping: shippingEstimate.price,

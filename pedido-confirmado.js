@@ -1,3 +1,4 @@
+import "./products.js";
 import { supabase } from "./supabase-client.js";
 
 const products = window.LA_PRODUCTS || [];

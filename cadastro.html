@@ -23,12 +23,12 @@
   <main class="checkout-main registration-main">
     <p class="eyebrow">UM PRESENTINHO PARA VOCÊ</p>
     <h1>Faça parte da L&A</h1>
-    <p class="checkout-intro">Crie sua conta para acompanhar pedidos, novidades e vantagens exclusivas.</p>
+    <p class="checkout-intro">Crie sua conta para acompanhar pedidos, novidades e vantagens exclusivas. Seu endereço ficará salvo para facilitar suas próximas compras.</p>
     <form class="checkout-form registration-form" id="registration-form">
       <section class="checkout-section" aria-labelledby="registration-personal-heading">
         <div class="checkout-section-heading">
           <span class="section-number">01</span>
-          <div><h2 id="registration-personal-heading">Seus dados</h2><p>Precisamos apenas do essencial para começar.</p></div>
+          <div><h2 id="registration-personal-heading">Seus dados</h2><p>Informações para criar e acessar sua conta.</p></div>
         </div>
         <div class="field-grid">
           <div class="form-field field-full">
@@ -50,9 +50,48 @@
           </div>
         </div>
       </section>
-      <section class="checkout-section" aria-labelledby="registration-preferences-heading">
+
+      <section class="checkout-section" aria-labelledby="registration-address-heading">
         <div class="checkout-section-heading">
           <span class="section-number">02</span>
+          <div><h2 id="registration-address-heading">Seu endereço</h2><p>Preencha o endereço para agilizar a entrega dos seus pedidos.</p></div>
+        </div>
+        <div class="field-grid">
+          <div class="form-field">
+            <label for="registration-cep">CEP <span>*</span></label>
+            <input id="registration-cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" pattern="[0-9]{5}-?[0-9]{3}" required aria-describedby="registration-cep-status">
+            <small class="field-hint" id="registration-cep-status" aria-live="polite">Digite o CEP para localizar o endereço.</small>
+          </div>
+          <div class="form-field">
+            <label for="registration-state">Estado (UF) <span>*</span></label>
+            <input id="registration-state" name="state" autocomplete="address-level1" maxlength="2" minlength="2" required>
+          </div>
+          <div class="form-field field-full">
+            <label for="registration-street">Rua / Avenida <span>*</span></label>
+            <input id="registration-street" name="street" autocomplete="address-line1" maxlength="160" required>
+          </div>
+          <div class="form-field">
+            <label for="registration-number">Número <span>*</span></label>
+            <input id="registration-number" name="number" autocomplete="address-line2" maxlength="20" required>
+          </div>
+          <div class="form-field">
+            <label for="registration-complement">Complemento</label>
+            <input id="registration-complement" name="complement" maxlength="100" placeholder="Apartamento, bloco, casa...">
+          </div>
+          <div class="form-field">
+            <label for="registration-neighborhood">Bairro <span>*</span></label>
+            <input id="registration-neighborhood" name="neighborhood" maxlength="100" required>
+          </div>
+          <div class="form-field">
+            <label for="registration-city">Cidade <span>*</span></label>
+            <input id="registration-city" name="city" autocomplete="address-level2" maxlength="100" required>
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-section" aria-labelledby="registration-preferences-heading">
+        <div class="checkout-section-heading">
+          <span class="section-number">03</span>
           <div><h2 id="registration-preferences-heading">Novidades e cupons</h2><p>Você escolhe se quer receber mensagens promocionais.</p></div>
         </div>
         <label class="registration-opt-in">
@@ -60,7 +99,7 @@
           <span>Quero receber novidades, lançamentos e cupons exclusivos da L&A por e-mail.</span>
         </label>
       </section>
-      <p class="registration-privacy">Seus dados de acesso são protegidos pelo serviço de autenticação. O recebimento de mensagens promocionais é opcional e depende da sua autorização.</p>
+      <p class="registration-privacy">Seus dados de acesso e endereço serão vinculados ao seu perfil. O recebimento de mensagens promocionais é opcional e depende da sua autorização.</p>
       <p class="checkout-feedback registration-feedback" id="registration-feedback" role="status" aria-live="polite"></p>
       <button class="button checkout-submit" id="registration-submit" type="submit">Criar minha conta <span aria-hidden="true">→</span></button>
     </form>

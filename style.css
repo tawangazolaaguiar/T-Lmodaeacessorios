@@ -27,7 +27,7 @@ button { color: inherit; }
 .brand-caption { margin-top: 5px; font-size: 7px; letter-spacing: .21em; }
 .main-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 43px); }
 .main-nav a { color: #55514b; font-size: 11px; transition: color .2s; }
-.main-nav .registration-nav-link { color: var(--rose-dark); font-weight: 700; }
+.main-nav .login-nav-link { font-weight: 700; }
 .main-nav a:hover, .text-link:hover { color: var(--rose); }
 .header-actions { display: flex; align-items: center; gap: 21px; }
 .search-box { display: flex; align-items: center; gap: 8px; width: 184px; border-bottom: 1px solid #dcd8d2; padding: 7px 0; }

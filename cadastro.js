@@ -1,65 +1,60 @@
+import { supabase, appUrl } from "./supabase-client.js";
+
 const form = document.querySelector("#registration-form");
-const cpfInput = document.querySelector("#registration-cpf");
-const cpfError = document.querySelector("#registration-cpf-error");
-const cepInput = document.querySelector("#registration-cep");
-const cepStatus = document.querySelector("#registration-cep-status");
 const feedback = document.querySelector("#registration-feedback");
-const checkoutUtils = window.LA_CHECKOUT_UTILS;
+const submitButton = document.querySelector("#registration-submit");
 
-cpfInput.addEventListener("input", () => {
-  cpfInput.setCustomValidity("");
-  cpfError.textContent = "";
-});
+function showFeedback(message, isError = false) {
+  feedback.textContent = message;
+  feedback.classList.toggle("field-error", isError);
+}
 
-cpfInput.addEventListener("blur", () => {
-  cpfInput.value = checkoutUtils.formatCPF(cpfInput.value);
-});
-
-cepInput.addEventListener("input", () => {
-  cepInput.setCustomValidity("");
-  cepStatus.textContent = "Digite o CEP para localizar o endereço.";
-  cepStatus.classList.remove("field-error");
-});
-
-cepInput.addEventListener("blur", async () => {
-  const cep = cepInput.value.replace(/\D/g, "");
-  if (cep.length !== 8) return;
-
-  cepStatus.textContent = "Consultando CEP…";
-  cepStatus.classList.remove("field-error");
-  try {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    if (!response.ok) throw new Error(`Consulta de CEP retornou HTTP ${response.status}.`);
-    const address = await response.json();
-    if (address.erro) {
-      cepStatus.textContent = "CEP não encontrado. Confira o número ou preencha o endereço manualmente.";
-      cepStatus.classList.add("field-error");
-      return;
-    }
-
-    document.querySelector("#registration-street").value = address.logradouro || "";
-    document.querySelector("#registration-neighborhood").value = address.bairro || "";
-    document.querySelector("#registration-city").value = address.localidade || "";
-    document.querySelector("#registration-state").value = address.uf || "";
-    cepStatus.textContent = "Endereço localizado. Confira e complete os campos.";
-  } catch (error) {
-    console.error("Não foi possível consultar o CEP.", error);
-    cepStatus.textContent = "Não foi possível consultar este CEP. Preencha o endereço manualmente.";
-    cepStatus.classList.add("field-error");
-  }
-});
-
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  feedback.textContent = "";
-  cpfInput.setCustomValidity("");
+  showFeedback("");
 
-  if (!checkoutUtils.isValidCPF(cpfInput.value)) {
-    cpfInput.setCustomValidity("Informe um CPF válido.");
-    cpfError.textContent = "Confira o CPF informado.";
-    cpfInput.reportValidity();
+  const fullName = document.querySelector("#registration-name").value.trim();
+  const email = document.querySelector("#registration-email").value.trim();
+  const password = document.querySelector("#registration-password").value;
+  const passwordConfirm = document.querySelector("#registration-password-confirm").value;
+  const marketingOptIn = form.elements.marketing.checked;
+
+  if (fullName.length < 2) {
+    showFeedback("Informe seu nome completo.", true);
+    return;
+  }
+  if (password.length < 8) {
+    showFeedback("Sua senha precisa ter pelo menos 8 caracteres.", true);
+    return;
+  }
+  if (password !== passwordConfirm) {
+    showFeedback("As senhas não coincidem. Confira e tente novamente.", true);
     return;
   }
 
-  feedback.textContent = "Os campos foram conferidos, mas o cadastro ainda não pode ser concluído: falta conectar o site a um serviço seguro de cadastro.";
+  submitButton.disabled = true;
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: appUrl("login.html"),
+      data: { full_name: fullName, marketing_opt_in: marketingOptIn }
+    }
+  });
+  submitButton.disabled = false;
+
+  if (error) {
+    showFeedback("Não foi possível criar a conta. Confira os dados ou tente novamente mais tarde.", true);
+    console.error("Falha no cadastro:", error.message);
+    return;
+  }
+
+  if (data.session) {
+    showFeedback("Conta criada com sucesso! Estamos levando você à sua área de cliente.");
+    window.setTimeout(() => window.location.assign(appUrl("minha-conta.html")), 900);
+    return;
+  }
+
+  form.reset();
+  showFeedback("Cadastro iniciado! Confira sua caixa de entrada e confirme seu e-mail para ativar a conta.");
 });

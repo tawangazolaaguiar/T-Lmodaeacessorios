@@ -193,6 +193,10 @@ cepInput.addEventListener("input", () => {
   updateShippingSummary();
 });
 cepInput.addEventListener("blur", lookupAddress);
+window.LA_CHECKOUT_REFRESH_ADDRESS = () => {
+  updateShippingSummary();
+  if (cepInput.value.replace(/\\D/g, "").length === 8) lookupAddress();
+};
 cpfInput.addEventListener("input", () => {
   cpfInput.setCustomValidity("");
   document.querySelector("#cpf-error").textContent = "";
